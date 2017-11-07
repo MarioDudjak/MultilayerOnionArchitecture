@@ -48,11 +48,28 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Common\Project.Common.csproj">
+      <Project>{293a9222-dba5-4409-bb85-10a50fdfdacd}</Project>
+      <Name>Project.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{5056aa55-2bf3-49a2-bd05-b91d8d22ef1e}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Repository\Project.Repository.csproj">
+      <Project>{d15cb109-a990-40b0-8a16-ef9d888a3daa}</Project>
+      <Name>Project.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Service\Project.Service.csproj">
+      <Project>{773a5a59-ba0c-4f3f-aa26-f34c5b2e785d}</Project>
+      <Name>Project.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

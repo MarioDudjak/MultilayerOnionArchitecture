@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>773a5a59-ba0c-4f3f-aa26-f34c5b2e785d</ProjectGuid>
+    <ProjectGuid>{773A5A59-BA0C-4F3F-AA26-F34C5B2E785D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Project.Service</RootNamespace>
@@ -30,24 +30,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{5056aa55-2bf3-49a2-bd05-b91d8d22ef1e}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Model.Common\Project.Model.Common.csproj">
+      <Project>{af24fb60-f3cb-4e40-90b0-79e33e6b2811}</Project>
+      <Name>Project.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Repository.Common\Project.Repository.Common.csproj">
+      <Project>{1380c4f7-c78f-4949-99bf-8d25dfc37f3f}</Project>
+      <Name>Project.Repository.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Repository\Project.Repository.csproj">
+      <Project>{d15cb109-a990-40b0-8a16-ef9d888a3daa}</Project>
+      <Name>Project.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Service.Common\Project.Service.Common.csproj">
+      <Project>{ad2723a7-7472-41e0-966f-29cff6bfdc98}</Project>
+      <Name>Project.Service.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

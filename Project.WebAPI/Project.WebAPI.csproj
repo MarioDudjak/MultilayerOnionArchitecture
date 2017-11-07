@@ -215,6 +215,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include=".bin\node.cmd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -252,6 +253,28 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Common\Project.Common.csproj">
+      <Project>{293a9222-dba5-4409-bb85-10a50fdfdacd}</Project>
+      <Name>Project.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{5056aa55-2bf3-49a2-bd05-b91d8d22ef1e}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Model.Common\Project.Model.Common.csproj">
+      <Project>{af24fb60-f3cb-4e40-90b0-79e33e6b2811}</Project>
+      <Name>Project.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Service.Common\Project.Service.Common.csproj">
+      <Project>{ad2723a7-7472-41e0-966f-29cff6bfdc98}</Project>
+      <Name>Project.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Service\Project.Service.csproj">
+      <Project>{773a5a59-ba0c-4f3f-aa26-f34c5b2e785d}</Project>
+      <Name>Project.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
