@@ -1,40 +1,73 @@
 
 <div class="row top-buffer">
     
-<form class="form-signin" id="loginForm">
+<form class="form-signin" id="loginForm" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+      <label for="email" class="sr-only">Email</label>
+      <input placeholder="Email" type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+      <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+      <label for="password" class="sr-only">Password</label>
+      <input placeholder="Password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+        required pattern="^(?=.*[a-z,A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.,-/]).{8,50}$" />
+      <div *ngIf="f.submitted && !password.valid" class="help-block">Password must be minimum 8 characters long (at least one letter, number and symbol)</div>
+      <a routerLink="/accountRecovery">Forgout account?</a>
+    </div>
+    <button [disabled]="loading" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+    />
     <div class="switch-forms">
         <p (click)="switchForms()" >Don't have an account?</p>
         </div>
   </form>
   
-  <form  class="form-signin" id="registerForm" >
+  <form  class="form-signin" id="registerForm" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate >
       <h2 class="form-signin-heading">Please sign up</h2>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label class="sr-only" for="username">Username</label>
+        <input placeholder="Username" type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
+            required />
+        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <label class="sr-only" for="email">Email</label>
+        <input placeholder="Email" type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+        <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <label class="sr-only" for="password">Password</label>
+        <input placeholder="Password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+            required pattern="^(?=.*[a-z,A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.,-/]).{8,50}$" />
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password must be minimum 8 characters long (at least one letter, number and symbol)</div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !repeatpassword.valid }">
+        <label class="sr-only" for="repeatpassword">Repeat password</label>
+        <input placeholder="Password" type="password" class="form-control" name="repeatpassword" [(ngModel)]="model.repeatpassword"
+            #repeatpassword="ngModel" required pattern="^(?=.*[a-z,A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.,-/]).{8,50}$"
+        />
+        <div *ngIf="f.submitted && !repeatpassword.valid" class="help-block">Password must be minimum 8 characters long (at least one letter, number and symbol)</div>
+        <div *ngIf="f.submitted && (repeatpassword.value)!=(password.value)" class="help-block">Passwords don't match</div>
+
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-lg btn-primary btn-block">Sign up</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
+  </div>
       <div class="switch-forms">
           <p (click)="switchForms()" >Already have an account?</p>
           </div>
     </form>
   
+    
+
 </div>
 
 <div class="row top-buffer">

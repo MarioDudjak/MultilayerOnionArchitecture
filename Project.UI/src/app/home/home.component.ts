@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
+  model: any = {};
   constructor() { }
 
   ngOnInit() {
@@ -24,5 +24,13 @@ export class HomeComponent implements OnInit {
         loginForm.style.display = "none";
         registerForm.style.display="block";        
     }
+  }
+
+  register(){
+
+  }
+
+  login(){
+    
   }
 }
