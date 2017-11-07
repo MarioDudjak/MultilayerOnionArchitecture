@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,6 +13,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  login(){
+    //ovo treba maknuti
+  }
+  
   switchForms(){
     var loginForm = document.getElementById("loginForm");
     var registerForm = document.getElementById("registerForm");
@@ -26,11 +31,4 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  register(){
-
-  }
-
-  login(){
-    
-  }
 }
