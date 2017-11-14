@@ -4,7 +4,7 @@ import { User } from "./user.model";
 
 @Injectable()
 export class UserService {
-	private apiUrl = "http://localhost:50249/api/user";
+	private apiUrl = "http://localhost:50968/api/user";
     constructor(private http: Http) { }
     
     async createUserAsync(data: User): Promise<User> {
