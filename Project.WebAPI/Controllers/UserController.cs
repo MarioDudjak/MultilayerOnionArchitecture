@@ -15,27 +15,27 @@ namespace Project.WebAPI.Controllers
     
         public UserController(IUserService userService, IMapper mapper)
         {
-            _userService = userService;
-            _mapper = mapper;
+            UserService = userService;
+            Mapper = mapper;
         }
 
         #endregion Constructors
 
         #region Properties
 
-        protected IUserService _userService { get; private set; }
-        private readonly IMapper _mapper;
+        protected IUserService UserService { get; private set; }
+        private readonly IMapper Mapper;
 
         #endregion Properties
 
         #region Methods
+       
         // POST: api/User/create
-
         [HttpPost]
         [Route("create")]
         public async Task<IHttpActionResult> Post(UserVM user)
         { 
-            var newUser = await _userService.CreateAsync(_mapper.Map<UserVM, IUser>(user));
+            var newUser = await UserService.CreateAsync(Mapper.Map<UserVM, IUser>(user));
             if (newUser != null)
             {
                 return Created<IUser>(Request.RequestUri + newUser.UserId.ToString(), newUser);
