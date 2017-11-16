@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Project.Model.Common;
 using AutoMapper;
+using Project.DAL.Entities;
 
 namespace Project.Repository
 {
@@ -32,14 +33,11 @@ namespace Project.Repository
         /// </summary>
         /// <param name="user">User which will be created.</param>
         /// <returns></returns>
-        public async Task<IUser> CreateAsync(IUser user)
+        public async Task<int> CreateAsync(IUser user)
         {
             user.UserId = Guid.NewGuid();
             var userEntity = Mapper.Map<IUser, UserEntity>(user);
-
-            var result = await GenericRepository.CreateAsync<UserEntity>(userEntity);
-
-            return Mapper.Map<UserEntity, IUser>(result);
+            return await GenericRepository.AddAsync<UserEntity>(userEntity);
         }
         #endregion Methods
 

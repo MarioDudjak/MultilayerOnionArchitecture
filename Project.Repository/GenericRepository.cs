@@ -1,5 +1,9 @@
-﻿using Project.Repository.Common;
+﻿using Project.DAL;
+using Project.Repository.Common;
 using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Project.Repository
@@ -20,7 +24,7 @@ namespace Project.Repository
             return UnitOfWorkFactory.CreateUnitOfWork();
         }
 
-        public async Task<T> CreateAsync<T>(T entity) where T : class
+        public async Task<int> AddAsync<T>(T entity) where T : class
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
             if (dbEntityEntry.State != EntityState.Detached)
@@ -31,16 +35,16 @@ namespace Project.Repository
             {
                 DbContext.Set<T>().Add(entity);
             }
-
             try
             {
-                await DbContext.SaveChangesAsync();
-                return entity;
+                return await DbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                throw ex;
+                Trace.WriteLine(ex.Message);
+                throw;
             }
+
         }
     }
     }

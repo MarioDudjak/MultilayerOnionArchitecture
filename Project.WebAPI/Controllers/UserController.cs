@@ -33,12 +33,12 @@ namespace Project.WebAPI.Controllers
         // POST: api/User/create
         [HttpPost]
         [Route("create")]
-        public async Task<IHttpActionResult> Post(UserVM user)
+        public async Task<IHttpActionResult> Create(UserVM user)
         { 
-            var newUser = await UserService.CreateAsync(Mapper.Map<UserVM, IUser>(user));
-            if (newUser != null)
+            var newUserID = await UserService.CreateAsync(Mapper.Map<UserVM, IUser>(user));
+            if (newUserID!=0)
             {
-                return Created<IUser>(Request.RequestUri + newUser.UserId.ToString(), newUser);
+                return Created<int>(Request.RequestUri + newUserID.ToString(), newUserID);
             }
             else
             {

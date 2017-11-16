@@ -14,6 +14,6 @@ namespace Project.Service.Common
         /// </summary>
         /// <param name="user">User to be created.</param>
         /// <returns></returns>
-        Task<IUser> CreateAsync(IUser user);
+        Task<int> CreateAsync(IUser user);
     }
 }

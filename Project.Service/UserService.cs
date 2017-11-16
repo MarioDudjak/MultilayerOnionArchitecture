@@ -24,9 +24,8 @@ namespace Project.Service
         #endregion Properties
 
         #region Methods
-        public async Task<IUser> CreateAsync(IUser user)
+        public async Task<int> CreateAsync(IUser user)
         {
-            System.IO.File.AppendAllText("E:/Jozo.txt", "hehe");
             return await Repository.CreateAsync(user);
         }
 
