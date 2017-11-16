@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Project.Model.Common;
+using AutoMapper;
 
 namespace Project.Repository
 {
@@ -9,11 +10,20 @@ namespace Project.Repository
     {
 
         #region Constructors
-        public UserRepository()
+        public UserRepository(IGenericRepository genericRepository, IMapper mapper)
         {
+            GenericRepository = genericRepository;
+            Mapper = mapper;
         }
         #endregion Constructors
 
+        #region Properties
+        protected IGenericRepository GenericRepository { get; private set; }
+        #endregion Properties
+
+        #region Fields
+        private readonly IMapper Mapper;
+        #endregion Fields
 
         #region Methods
 
@@ -22,9 +32,14 @@ namespace Project.Repository
         /// </summary>
         /// <param name="user">User which will be created.</param>
         /// <returns></returns>
-        public Task<IUser> CreateAsync(IUser user)
+        public async Task<IUser> CreateAsync(IUser user)
         {
-            throw new NotImplementedException();
+            user.UserId = Guid.NewGuid();
+            var userEntity = Mapper.Map<IUser, UserEntity>(user);
+
+            var result = await GenericRepository.CreateAsync<UserEntity>(userEntity);
+
+            return Mapper.Map<UserEntity, IUser>(result);
         }
         #endregion Methods
 

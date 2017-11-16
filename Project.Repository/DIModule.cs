@@ -1,9 +1,5 @@
-﻿using Project.Repository.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ninject.Extensions.Factory;
+using Project.Repository.Common;
 
 namespace Project.Repository
 {
@@ -11,7 +7,10 @@ namespace Project.Repository
     {
         public override void Load()
         {
+            Bind<IGenericRepository>().To<GenericRepository>();
             Bind<IUserRepository>().To<UserRepository>();
+            Bind<IUnitOfWork>().To<UnitOfWork>();
+            Bind<IUnitOfWorkFactory>().ToFactory();
         }
     }
 }
