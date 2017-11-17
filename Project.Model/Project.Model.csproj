@@ -53,6 +53,10 @@
     <Compile Include="UserPOCO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{5056AA55-2BF3-49A2-BD05-B91D8D22EF1E}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Project.Model.Common\Project.Model.Common.csproj">
       <Project>{af24fb60-f3cb-4e40-90b0-79e33e6b2811}</Project>
       <Name>Project.Model.Common</Name>

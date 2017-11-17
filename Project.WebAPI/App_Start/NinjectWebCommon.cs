@@ -3,6 +3,8 @@ using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.WebHost;
 using Ninject.Web.WebApi;
+using Project.Service;
+using Project.Service.Common;
 using Project.WebAPI.App_Start;
 using System;
 using System.Linq;
@@ -50,8 +52,10 @@ namespace Project.WebAPI.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var settings = new NinjectSettings();
-            settings.LoadExtensions = true;
+            var settings = new NinjectSettings()
+            {
+                LoadExtensions = true
+            };
             settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns.Union(new string[] { "Project.*.dll" }).ToArray();
             var kernel = new StandardKernel(settings);
             try

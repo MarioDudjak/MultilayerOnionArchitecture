@@ -6,7 +6,8 @@ namespace Project.Service
     {
         public override void Load()
         {
-            Bind<IUserService>().To<UserService>();           
+            Bind<IUserService>().To<UserService>();     
+            
         }
     }
 }
