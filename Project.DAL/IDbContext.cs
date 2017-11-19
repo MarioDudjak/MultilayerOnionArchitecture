@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -10,7 +11,10 @@ namespace Project.DAL
 {
     public interface IDbContext : IDisposable
     {
+        DbSet<UserEntity> Users { get; set; }
+      
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
+
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
         Task<int> SaveChangesAsync();

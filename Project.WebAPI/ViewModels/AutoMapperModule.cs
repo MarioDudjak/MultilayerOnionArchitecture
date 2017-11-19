@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
 using Ninject.Modules;
 using Project.Model.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Project.WebAPI.ViewModels
 {
     public class AutoMapperModule : NinjectModule
     {
+        
         public override void Load()
         {
             Bind<IMapper>().ToMethod(AutoMapper).InSingletonScope();
@@ -23,6 +20,6 @@ namespace Project.WebAPI.ViewModels
             });
 
             return Mapper.Instance;
-        }
+        } 
     }
 }

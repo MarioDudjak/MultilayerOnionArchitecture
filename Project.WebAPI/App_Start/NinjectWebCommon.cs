@@ -3,22 +3,20 @@ using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.WebHost;
 using Ninject.Web.WebApi;
-using Project.Service;
-using Project.Service.Common;
-using Project.WebAPI.App_Start;
 using System;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Project.WebAPI.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Project.WebAPI.App_Start.NinjectWebCommon), "Stop")]
+
 
 namespace Project.WebAPI.App_Start
 {
     public static class NinjectWebCommon
     {
-        #region Methods
+        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -37,14 +35,6 @@ namespace Project.WebAPI.App_Start
         {
             bootstrapper.ShutDown();
         }
-
-        #endregion Methods
-
-        #region Fields
-
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
-
-        #endregion Fields
 
         /// <summary>
         /// Creates the kernel that will manage your application.
@@ -78,7 +68,7 @@ namespace Project.WebAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
         }
     }
 }

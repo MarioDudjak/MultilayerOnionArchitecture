@@ -9,13 +9,18 @@ namespace Project.DAL
     {
         public WebGalleryDbContext() : base("name=WebGalleryDbConnectionString") { }
 
+        public static WebGalleryDbContext Create()
+        {
+            return new WebGalleryDbContext();
+        }
+
+        public DbSet<UserEntity> Users { get; set; }
+       
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserEntityMap());
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<UserEntity> Users { get; set; }
-
     }
 }
