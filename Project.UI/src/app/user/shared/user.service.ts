@@ -8,13 +8,16 @@ export class UserService {
     constructor(private http: Http) { }
     
     async createUserAsync(data: User): Promise<User> {
-        let body = JSON.stringify(data);
+    let body = JSON.stringify(data);
 		let headers = new Headers({ "Content-Type": "application/json" });
 		let options = new RequestOptions({ headers: headers });
 		var query = this.apiUrl + "/create";
         try {
+
+          console.log("tusam",query);
           let response = await this.http.post(query, body, options)
             .toPromise();
+          console.log(response.json());
           return response.json().data;
         } catch (error) {
           await this.handleErrorAsync(error);

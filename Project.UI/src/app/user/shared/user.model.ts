@@ -1,26 +1,26 @@
 export class User {
-    private email:string;
-    private username:string;
-    private password:string;
-	private userID:number;
+    private Email:string;
+    private Username:string;
+    private Password:string;
+	private UserID:number;
 
 constructor(email:string,username:string,password:string){
-    this.email=email;
-    this.username=username;
-    this.password=password;
+    this.Email=email;
+    this.Username=username;
+    this.Password=password;
 }
 
 public getEmail():string{
-    return this.email;
+    return this.Email;
 }
 public getUsername():string{
-    return this.username;
+    return this.Username;
 }
 public getPassword():string{
-    return this.password;
+    return this.Password;
 }
 public getId():number{
-    return this.userID;
+    return this.UserID;
 }
 
 }
