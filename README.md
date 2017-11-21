@@ -6,7 +6,7 @@ An application should allow the user to set public and private photos and apply 
 Structure:
 
 Multilayer onion architecture implemented with DI,IoC and various Design Patterns.
-On top of architecture (UI) is ASP.NET WebAPI project which is actually Angular2 application.
+On top of architecture is ASP.NET WebAPI project and the client technology is Angular2/4 application.
 
 Technologies and tools:    
 C#, ASP.NET  

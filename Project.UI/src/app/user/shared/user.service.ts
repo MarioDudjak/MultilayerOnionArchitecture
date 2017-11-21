@@ -14,10 +14,9 @@ export class UserService {
 		var query = this.apiUrl + "/create";
         try {
 
-          console.log("tusam",query);
           let response = await this.http.post(query, body, options)
             .toPromise();
-          console.log(response.json());
+          console.log(response.json().data);
           return response.json().data;
         } catch (error) {
           await this.handleErrorAsync(error);
